@@ -22,23 +22,43 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
+
   @override
-  _MainPageState createState() => _MainPageState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: NavigationDrawer(),
+      appBar: AppBar(
+        title: Text(MyApp.title),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Container(
+          child: Text("Page is running"),
+        ),
+      ),
+    );
+  }
 }
 
-class _MainPageState extends State<MainPage> {
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        drawer: NavigationDrawer(),
-        appBar: AppBar(
-          title: Text(MyApp.title),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Container(
-            child: Text("Page is running"),
-          ),
-        ),
-      );
-}
+// class MainPage extends StatefulWidget {
+//   @override
+//   _MainPageState createState() => _MainPageState();
+// }
+
+// class _MainPageState extends State<MainPage> {
+//   @override
+//   Widget build(BuildContext context) => Scaffold(
+//         drawer: NavigationDrawer(),
+//         appBar: AppBar(
+//           title: Text(MyApp.title),
+//           centerTitle: true,
+//         ),
+//         body: Center(
+//           child: Container(
+//             child: Text("Page is running"),
+//           ),
+//         ),
+//       );
+// }
