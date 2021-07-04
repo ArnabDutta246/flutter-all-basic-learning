@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/inputFiled/inputFields.main.dart';
+import 'package:flutter_basic/main.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -15,6 +16,23 @@ class NavigationDrawer extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            Text(
+              'Normal Material routing',
+              style: TextStyle(
+                fontSize: 10.00,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            singleMenuItem(
+                text: 'Home',
+                icon: Icons.home,
+                onClicked: () => selectedRoutes(context, 0)),
+            const SizedBox(
+              height: 8,
+            ),
             singleMenuItem(
                 text: 'Inputs',
                 icon: Icons.inbox,
@@ -22,18 +40,36 @@ class NavigationDrawer extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
+
+            Divider(
+              color: Colors.white70,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            //======================
+            // name Routing
+            Text(
+              'Named routing',
+              style: TextStyle(
+                fontSize: 10.00,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             singleMenuItem(
-                text: 'ListView',
-                icon: Icons.list,
-                onClicked: () => selectedRoutes(context, 2)),
+                text: 'Home',
+                icon: Icons.home,
+                onClicked: () => selectedNamedRoutes(context, 0)),
             const SizedBox(
               height: 8,
             ),
             singleMenuItem(
-              text: 'Slivers',
-              icon: Icons.add_box_outlined,
-              onClicked: () => selectedRoutes(context, 3),
-            ),
+                text: 'Inputs',
+                icon: Icons.inbox,
+                onClicked: () => selectedNamedRoutes(context, 1)),
             const SizedBox(
               height: 8,
             ),
@@ -41,7 +77,33 @@ class NavigationDrawer extends StatelessWidget {
               color: Colors.white70,
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
+            ),
+            //======================
+            // name Routing
+            Text(
+              'Route Generator',
+              style: TextStyle(
+                fontSize: 10.00,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            singleMenuItem(
+                text: 'Home',
+                icon: Icons.home,
+                onClicked: () => selectedGeneratedRoutes(context, 0)),
+            const SizedBox(
+              height: 8,
+            ),
+            singleMenuItem(
+                text: 'Inputs',
+                icon: Icons.inbox,
+                onClicked: () => selectedGeneratedRoutes(context, 1)),
+            const SizedBox(
+              height: 8,
             ),
           ],
         ),
@@ -53,12 +115,47 @@ class NavigationDrawer extends StatelessWidget {
 void selectedRoutes(BuildContext context, int index) {
   Navigator.of(context).pop();
   switch (index) {
+    case 0:
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => MainPage(),
+        ),
+      );
+      break;
     case 1:
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => InputFieldWidget(),
+          builder: (context) =>
+              InputFieldWidget(data: "Passing Data Input field widget"),
         ),
       );
+      break;
+    default:
+  }
+}
+
+void selectedNamedRoutes(BuildContext context, int index) {
+  Navigator.of(context).pop();
+  switch (index) {
+    case 0:
+      Navigator.of(context).pushNamed('/home');
+      break;
+    case 1:
+      Navigator.of(context).pushNamed('/inputFieldWidget');
+      break;
+    default:
+  }
+}
+
+void selectedGeneratedRoutes(BuildContext context, int index) {
+  Navigator.of(context).pop();
+  switch (index) {
+    case 0:
+      Navigator.of(context).pushNamed('/home');
+      break;
+    case 1:
+      Navigator.of(context)
+          .pushNamed('/inputFieldWidget', arguments: 'Hellow there');
       break;
     default:
   }
