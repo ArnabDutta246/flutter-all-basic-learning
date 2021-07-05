@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/app/pages/buttonsWidgets/buttonsWidgets.main.dart';
 import 'package:flutter_basic/app/pages/inputWidgets/inputsWidgets.main.dart';
 import 'package:flutter_basic/main.dart';
 
@@ -12,9 +13,10 @@ class RouteGenerator {
     switch (settings.name) {
       case '/home':
         return MaterialPageRoute(builder: (_) => MainPage());
-        break;
       case '/inputWidgets':
-        return MaterialPageRoute(builder: (context) => InputWidgetsPage());
+        return MaterialPageRoute(builder: (_) => InputWidgetsPage());
+      case '/buttonWidgets':
+        return MaterialPageRoute(builder: (_) => ButtonsWidgetsPage());
       default:
         return _errorRoute();
     }

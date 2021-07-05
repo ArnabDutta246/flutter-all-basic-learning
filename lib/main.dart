@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/app/pages/navigation-drawer/naviagationDrawer.main.dart';
-import 'package:flutter_basic/for_experiment/navigationDrawer/route_generatr/route_generator.main.dart';
+import 'package:flutter_basic/app/routes/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       home: MainPage(),
       // using generated route
       initialRoute: '/home',
-      onGenerateRoute: RouteGenerator.generatorRoute,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

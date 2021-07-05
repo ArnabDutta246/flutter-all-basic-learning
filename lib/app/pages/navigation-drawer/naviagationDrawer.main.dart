@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_basic/main.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -15,22 +14,20 @@ class NavigationDrawer extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            //======================
-            // name Routing
+            singleMenuItem(
+                text: 'Home',
+                icon: Icons.home,
+                onClicked: () => selectedGeneratedRoutes(context, 0)),
+            const SizedBox(
+              height: 10,
+            ),
             Text(
-              'Route Generator',
+              'All widgets',
               style: TextStyle(
                 fontSize: 10.00,
                 color: Colors.white,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            singleMenuItem(
-                text: 'Home',
-                icon: Icons.home,
-                onClicked: () => selectedGeneratedRoutes(context, 0)),
             const SizedBox(
               height: 8,
             ),
@@ -41,6 +38,10 @@ class NavigationDrawer extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
+            singleMenuItem(
+                text: 'Buttons',
+                icon: Icons.check_box_outline_blank,
+                onClicked: () => selectedGeneratedRoutes(context, 2)),
           ],
         ),
       ),
@@ -56,7 +57,10 @@ void selectedGeneratedRoutes(BuildContext context, int index) {
       break;
     case 1:
       Navigator.of(context)
-          .pushNamed('/inputFieldWidget', arguments: 'Hellow there');
+          .pushNamed('/inputWidgets', arguments: 'Hellow there');
+      break;
+    case 2:
+      Navigator.of(context).pushNamed('/buttonWidgets');
       break;
     default:
   }
