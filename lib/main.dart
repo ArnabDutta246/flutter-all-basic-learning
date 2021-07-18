@@ -9,18 +9,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Basic',
+      title: 'Flutter Listview',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyAppStart(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('ListView'),
+        ),
+        body: BodyLayout(),
+      ),
     );
   }
 }
 
-class MyAppStart extends StatelessWidget {
+class BodyLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return _ListView(context);
   }
+}
+
+Widget _ListView(BuildContext context) {
+  return ListView();
 }
