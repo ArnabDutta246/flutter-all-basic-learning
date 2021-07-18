@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: MyAppStart(),
-      home: SliverAppbarWithTab(),
+      home: MyAppStart(),
+      // home: SliverAppbarWithTab(),
     );
   }
 }
@@ -31,13 +31,20 @@ class MyAppStart extends StatelessWidget {
         slivers: [
           SliverAppBar(
             leading: Icon(Icons.menu),
-            title: Text('Sliver Learning'),
+            //title: Text('Sliver Learning'),
             backgroundColor: Colors.blueAccent,
+            //collapsedHeight: 150,
             expandedHeight: 100.0,
             elevation: 3.0,
-            floating: true,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(),
+            // floating: true,
+            // pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              // background: Image.network(src,
+              // fit: BoxFit.cover,),
+              title: Text('Text in FlexibleSpace'),
+              titlePadding: EdgeInsets.all(10),
+              centerTitle: true,
+            ),
             actions: <Widget>[
               Icon(
                 Icons.person,
@@ -48,7 +55,42 @@ class MyAppStart extends StatelessWidget {
               ),
             ],
           ),
+          SliverAppBar(
+            backgroundColor: Colors.greenAccent,
+            title: Text('Grid Section 1'),
+            expandedHeight: 30,
+            // collapsedHeight: 150,
+            // floating: true,
+            // pinned: true,
+          ),
           gridLayout(),
+          SliverAppBar(
+            backgroundColor: Colors.greenAccent,
+            title: Text('Grid Section 2'),
+            expandedHeight: 30,
+            // collapsedHeight: 150,
+            // floating: true,
+            // pinned: true,
+          ),
+          gridLayout(),
+          SliverAppBar(
+            backgroundColor: Colors.greenAccent,
+            title: Text('Grid Section 3'),
+            expandedHeight: 30,
+            // collapsedHeight: 150,
+            // floating: true,
+            // pinned: true,
+          ),
+          gridLayout(),
+          SliverAppBar(
+            backgroundColor: Colors.greenAccent,
+            title: Text('Sliver List'),
+            expandedHeight: 30,
+            // collapsedHeight: 150,
+            // floating: true,
+            // pinned: true,
+          ),
+          sliverListSection(),
         ],
       ),
     );
@@ -99,6 +141,52 @@ Widget gridLayout() {
             width: 100,
             color: Colors.amber[colorsList[index]],
             child: Text(list[index]),
+          ),
+        );
+      },
+    ),
+  );
+}
+
+Widget sliverListSection() {
+  final List<String> list = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f'
+  ];
+  final List<int> colorsList = [
+    600,
+    500,
+    100,
+    300,
+    500,
+    200,
+    600,
+    500,
+    100,
+    300,
+    500,
+    200
+  ];
+  return SliverToBoxAdapter(
+    child: ListView.builder(
+      shrinkWrap: true,
+      itemCount: list.length,
+      itemBuilder: (BuildContext context, int index) {
+        return InkWell(
+          onTap: () {},
+          child: Container(
+            height: 100,
+            color: Colors.amber[colorsList[index]],
           ),
         );
       },
